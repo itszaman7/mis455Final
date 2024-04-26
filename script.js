@@ -19,30 +19,32 @@ function searchMeals() {
     function displayMeals(meals) {
         const mealContainer = document.getElementById('mealContainer');
         mealContainer.innerHTML = ''; // Clear previous results
-        meals.forEach(meal => {
+        meals.forEach((meal, index) => {
             const mealElement = document.createElement('div');
-            mealElement.className = 'd-flex flex-row mb-3'; // Horizontal layout
+            mealElement.className = 'card mb-3'; // Use card layout
             mealElement.innerHTML = `
-                <div class="card flex-fill">
+                <div class="card-body">
                     <div class="row g-0">
-                        <div class="col-lg-3 col-md-4">
-                            <img src="${meal.strMealThumb}" class="img-fluid rounded-start" alt="${meal.strMeal}">
+                        <div class="col-md-4 d-flex  ">
+                            <img src="${meal.strMealThumb}" class="img-fluid rounded" alt="${meal.strMeal}">
                         </div>
-                        <div class="col-lg-9 col-md-8">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="card-title">${meal.strMeal}</h5>
-                                        <p class="card-text">ID: ${meal.idMeal}</p>
-                                        <ul class="ingredients-grid">${getIngredients(meal)}</ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p><strong>Instructions:</strong></p>
-                                        <div class="instructions">${meal.strInstructions}</div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-success mt-3" onclick="showInstructions('${meal.idMeal}')">Full Details</button>
+                        <div class="col-md-8 d-flex ">
+                            <div>
+                                <h5 class="card-title">${meal.strMeal}</h5>
+                                <p class="card-text">ID: ${meal.idMeal}</p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <ul class="ingredients-grid">${getIngredients(meal)}</ul>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <div id="instructions-${index}" class="instructions" style="display: none;">
+                                <strong>Instructions:</strong>
+                                <p>${meal.strInstructions}</p>
+                            </div>
+                            <button class="btn btn-success mt-2" onclick="toggleInstructions(${index})">Full Details</button>
                         </div>
                     </div>
                 </div>
@@ -54,20 +56,23 @@ function searchMeals() {
     function getIngredients(meal) {
         let ingredients = '';
         for (let i = 1; i <= 20; i++) { // Assuming there are up to 20 ingredients
-            if (meal[`strIngredient${i}`]) {
-                ingredients += `<li class="col-6">${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
+            if (meal[`strIngredient${i}`] && meal[`strMeasure${i}`]) {
+                ingredients += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
             }
         }
         return ingredients;
     }
     
-    function showInstructions(id) {
-        const meal = fullMealData.find(m => m.idMeal === id);
-        if (meal) {
-            // Assuming you want to display this in an alert or modal
-            alert(meal.strInstructions); // You might want to replace this with modal logic
+    function toggleInstructions(index) {
+        const instructionsElement = document.getElementById(`instructions-${index}`);
+        if (instructionsElement.style.display === "none") {
+            instructionsElement.style.display = "block";
+        } else {
+            instructionsElement.style.display = "none";
         }
     }
+    
+    
     
     
 

@@ -53,18 +53,24 @@ body {
 }
 
 /* Search Input */
+.instructions {
+    height: auto; 
+    overflow-y: auto; 
+}
+
 .ingredients-grid {
     list-style-type: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 3px;
 }
 
 .ingredients-grid li {
     margin-bottom: 5px;
 }
 
-.instructions {
-    height: 150px; 
-    overflow-y: auto; 
-}
+
+
 
 
