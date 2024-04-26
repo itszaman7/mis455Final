@@ -18,10 +18,10 @@ function searchMeals() {
 
     function displayMeals(meals) {
         const mealContainer = document.getElementById('mealContainer');
-        mealContainer.innerHTML = ''; // Clear previous results
+        mealContainer.innerHTML = ''; 
         meals.forEach((meal, index) => {
             const mealElement = document.createElement('div');
-            mealElement.className = 'card mb-3'; // Use card layout
+            mealElement.className = 'card mb-3'; 
             mealElement.innerHTML = `
                 <div class="card-body">
                 <div class="row g-0 align-items-center">   
@@ -75,8 +75,6 @@ function searchMeals() {
             instructionsElement.style.display = "none";
         }
     }
-    
-    
     
     
 

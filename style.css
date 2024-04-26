@@ -1,6 +1,23 @@
-body {
-    background-color:  #F5F5DC;
+html, body {
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
 }
+
+body {
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+}
+
+.container {
+    flex: 1; 
+}
+
+footer {
+    width: 100%; 
+}
+
 
 .navbar-custom {
     background-color: #FFFFFF;
@@ -86,8 +103,6 @@ body {
     border-radius: 0.25rem;
     font-size: 1rem;
 }
-
-
 
 
 
