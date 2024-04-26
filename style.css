@@ -59,16 +59,34 @@ body {
 }
 
 .ingredients-grid {
-    list-style-type: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 3px;
+    display: flex; 
+    flex-wrap: wrap; 
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    
 }
 
-.ingredients-grid li {
-    margin-bottom: 5px;
+.ingredient-item {
+    margin-right: 10px;
+    color: #6b5c31; 
+    font-weight: bold; 
 }
+
+.meal-title {
+    font-size: 3.75rem; 
+    color: limegreen; 
+    font-weight: bold;
+}
+
+.meal-id {
+    background-color: #f0ad4e; 
+    color: white;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
 
 
 

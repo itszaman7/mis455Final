@@ -24,30 +24,33 @@ function searchMeals() {
             mealElement.className = 'card mb-3'; // Use card layout
             mealElement.innerHTML = `
                 <div class="card-body">
-                    <div class="row g-0">
-                        <div class="col-md-4 d-flex  ">
-                            <img src="${meal.strMealThumb}" class="img-fluid rounded" alt="${meal.strMeal}">
-                        </div>
-                        <div class="col-md-8 d-flex ">
-                            <div>
-                                <h5 class="card-title">${meal.strMeal}</h5>
-                                <p class="card-text">ID: ${meal.idMeal}</p>
-                            </div>
-                        </div>
+                <div class="row g-0 align-items-center">   
+                    <div class="col-md-4">
+                        <img src="${meal.strMealThumb}" class="img-fluid rounded" alt="${meal.strMeal}" style="width: 300px; height: 300px;">
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <ul class="ingredients-grid">${getIngredients(meal)}</ul>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <div id="instructions-${index}" class="instructions" style="display: none;">
-                                <strong>Instructions:</strong>
-                                <p>${meal.strInstructions}</p>
-                            </div>
-                            <button class="btn btn-success mt-2" onclick="toggleInstructions(${index})">Full Details</button>
+                    <div class="col-md-8">
+                        <div>
+                            <h5 class="meal-title">${meal.strMeal}</h5>
+                            <span class="meal-id">ID: ${meal.idMeal}</span>
                         </div>
                     </div>
                 </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <ul class="ingredients-grid">
+                            ${getIngredients(meal)}
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div id="instructions-${index}" class="instructions" style="display: none;">
+                            <strong>Instructions:</strong>
+                            <p>${meal.strInstructions}</p>
+                        </div>
+                        <button class="btn btn-success mt-2" onclick="toggleInstructions(${index})">Full Details</button>
+                    </div>
+                </div>
+
+            
             `;
             mealContainer.appendChild(mealElement);
         });
@@ -55,13 +58,14 @@ function searchMeals() {
     
     function getIngredients(meal) {
         let ingredients = '';
-        for (let i = 1; i <= 20; i++) { // Assuming there are up to 20 ingredients
+        for (let i = 1; i <= 20; i++) {
             if (meal[`strIngredient${i}`] && meal[`strMeasure${i}`]) {
-                ingredients += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
+                ingredients += `<li class="ingredient-item">${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
             }
         }
         return ingredients;
     }
+    
     
     function toggleInstructions(index) {
         const instructionsElement = document.getElementById(`instructions-${index}`);
