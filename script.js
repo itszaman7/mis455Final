@@ -11,10 +11,24 @@ function searchMeals() {
         .then(data => {
             console.log("Data received:", data);
             fullMealData = data.meals || [];
-            displayMeals(fullMealData.slice(0, 5));
-            document.getElementById('showAllButton').style.display = fullMealData.length > 5 ? 'block' : 'none';
-        }).catch(error => console.error("API fetch error:", error));
-    }
+            if (fullMealData.length > 0) {
+                displayMeals(fullMealData.slice(0, 5));
+                document.getElementById('showAllButton').style.display = fullMealData.length > 5 ? 'block' : 'none';
+            } else {
+                displayNoResults();
+            }
+        }).catch(error => {
+            console.error("API fetch error:", error);
+            displayNoResults();
+        });
+}
+
+function displayNoResults() {
+    const mealContainer = document.getElementById('mealContainer');
+    mealContainer.innerHTML = '<p class="text-center">No results found.</p>';
+    document.getElementById('showAllButton').style.display = 'none'; // Hide SHOW ALL button if no results
+}
+
 
     function displayMeals(meals) {
         const mealContainer = document.getElementById('mealContainer');
