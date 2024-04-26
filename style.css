@@ -53,5 +53,18 @@ body {
 }
 
 /* Search Input */
+.ingredients-grid {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ingredients-grid li {
+    margin-bottom: 5px;
+}
+
+.instructions {
+    height: 150px; 
+    overflow-y: auto; 
+}
 
 

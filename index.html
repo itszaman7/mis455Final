@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-custom mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="./assets/logo.png" alt="One Piece" style="width: 90px; height: auto;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,28 +26,17 @@
         </div>
     </nav>
 
-    <div class="search-container d-flex justify-content-center align-items-center" style="position: fixed; top: 100px; width: 100%; z-index: 1000; ">
+    <div class="search-container d-flex justify-content-center align-items-center" style=" top: 100px; width: 100%; z-index: 1000;">
         <div class="input-group" style="width: 400px;">
-            <input type="text" class="form-control" placeholder="Search..." style="border: 2px solid #32CD32; border-right: none;">
-            <button class="btn btn-success" style="border: 2px solid #32CD32; background-color: #32CD32; color: #FFFFFF;">Search</button>
+            <input type="text" id="searchInput" class="form-control" placeholder="Search..." style="border: 2px solid #32CD32; border-right: none;">
+            <button onclick="searchMeals()" class="btn btn-success" style="border: 2px solid #32CD32; background-color: #32CD32; color: #FFFFFF;">Search</button>
         </div>
     </div>
+    <div class="container mt-5 pt-5">
+        <div class="row mt-3" id="mealContainer"></div>
+        <button id="showAllButton" class="btn btn-primary mt-3" style="display:none;">SHOW ALL</button>
+    </div>
 
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="path_to_meal_image.jpg" class="img-fluid rounded-start" alt="Meal Image">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Meal Name: Example Meal</h5>
-              <p class="card-text"><strong>ID:</strong> 12345</p>
-              <p class="card-text"><strong>Title:</strong> Delicious Example Meal</p>
-              <p class="card-text"><small class="text-muted">Cooking Instructions: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet consectetur dolor in elementum.</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
       
     
     
